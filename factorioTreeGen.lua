@@ -229,9 +229,9 @@ function showHelp(exitCode)
 end
 function loadArgs()
 	local argsLen = #arg
-	--if argsLen == 0 then
-	--	showHelp(1)
-	--end
+	if argsLen == 0 then
+		showHelp(1)
+	end
 	
 	if table.contains(arg, "-h")
 	or table.contains(arg, "--help")
@@ -306,12 +306,13 @@ function loadArgs()
 	lightInputs = not noLevels and lightInputs
 	lightTech = not noLevels and lightTech
 	
-	-- [Please correct at final release]
 	if not factorioDir then
 		print("Please specify Factorio directory")
+		showHelp(1)
 	end
 	if not outputFile then
 		print("Please specify output file path")
+		showHelp(1)
 	end
 	
 	game.dirs.root = factorioDir
